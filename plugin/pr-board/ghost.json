@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 3,
+  "id": "pr-board",
+  "name": "我的 PR 看板",
+  "version": "1.0.0",
+  "minCindyVersion": "0.1.121",
+  "description": "查看自己创建、指派给自己和等待自己评审的 GitHub PR，以及 CI 状态；将排查交给 Cindy。",
+  "whenToUse": "查看我的 GitHub PR、待评审 PR、PR 的 CI 状态和 CI 失败原因时使用",
+  "entry": "main.js",
+  "command": "pr-board",
+  "panel": { "title": "我的 PR 看板", "html": "panel.html", "position": "right" },
+  "settingsHtml": "settings.html",
+  "agent": { "tasks": true },
+  "network": {
+    "hosts": ["api.github.com"],
+    "secrets": [{
+      "key": "github_token",
+      "label": "GitHub Token",
+      "hint": "fine-grained PAT 可按仓库授予 PR、Commit statuses、Actions 读取权限，但无 Checks 选项。私有 Checks 需支持该接口的 OAuth token 或 classic PAT 的 repo scope；repo 权限较广，并非只读。",
+      "url": "https://github.com/settings/tokens",
+      "inject": { "header": "Authorization", "format": "Bearer {value}", "hosts": ["api.github.com"] }
+    }]
+  },
+  "tools": [{
+    "name": "list_prs",
+    "description": "列出当前 GitHub 用户创建、被指派或被请求评审的未关闭 PR，包含按当前 head SHA 查询的 CI 状态。",
+    "parameters": { "type": "object", "properties": {}, "additionalProperties": false }
+  }, {
+    "name": "get_ci_context",
+    "description": "读取指定 PR 当前 head SHA 的 CI 状态、失败检查输出和注解，供当前 Agent 分析；不另建任务。",
+    "parameters": {
+      "type": "object",
+      "properties": { "repo": { "type": "string", "description": "owner/repository" }, "number": { "type": "integer", "minimum": 1 } },
+      "required": ["repo", "number"], "additionalProperties": false
+    }
+  }]
+}

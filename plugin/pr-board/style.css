@@ -1,0 +1,8 @@
+:root { font: 14px/1.5 system-ui, sans-serif; color: var(--text-primary, #1a1a1a); background: var(--panel-bg, #f7f7f5); }
+body { margin: 0; } main { padding: 16px; } .toolbar { display: flex; align-items: center; gap: 12px; }
+button, input { color: inherit; background: var(--surface, #fff); border: 1px solid var(--border-default, #e4e4e0); border-radius: 6px; padding: 8px 12px; font: inherit; }
+button { cursor: pointer; } button:disabled { cursor: wait; opacity: .6; } input { max-width: 100%; box-sizing: border-box; }
+p { overflow-wrap: anywhere; } a { color: var(--text-primary, #1a1a1a); } small { color: var(--text-secondary, #666); }
+.pr { padding: 14px 0; border-bottom: 1px solid var(--border-default, #e4e4e0); } .pr h2 { font-size: 14px; margin: 4px 0; } .pr button { margin-top: 8px; } .pr p { margin: 6px 0; }
+.success { color: var(--success, #22863a); } .failure { color: var(--error, #c53030); } .running { color: var(--warning, #966b00); } .unknown { color: var(--text-secondary, #666); }
+.settings label { display: block; margin: 8px 0; } .settings input { width: 100%; } .settings .toolbar { margin-top: 10px; }

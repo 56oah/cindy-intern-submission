@@ -1,0 +1,16 @@
+name: PR board tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/pr-board.test.cjs
+      - run: node --check plugin/pr-board/main.js && node --check plugin/pr-board/panel.js && node --check plugin/pr-board/settings.js

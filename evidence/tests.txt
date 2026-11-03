@@ -1,0 +1,40 @@
+检查时间：2026-11-03T16:51:18+08:00
+Node.js v24.22.1
+
+$ node --test tests/pr-board.test.cjs
+✔ 列表去重，CI 绑定 base 仓库的当前 head SHA，在途工具保留 callId (3.034333ms)
+✔ CI 区分成功、失败、运行中、无检查和权限不足 (2.196709ms)
+✔ Checks 分页中的失败被读取；达到分页上限不能判为通过 (2.157ms)
+✔ 交接包含 SHA、失败检查和作业步骤，部分注解失败仍可交接，同一点击只发送一次 (2.943834ms)
+✔ 派发结果未知后重启，沿用持久化的请求键、正文与 revision，不另建任务 (1.4805ms)
+✔ 同一 SHA 的 CI 从运行中变失败后可再次排查，同一诊断快照不重复交接 (0.705834ms)
+✔ KV 按 UTF-8 字节回收已受理记录，未确定记录占满时不创建或发送 (0.918709ms)
+✔ tasks.send 正常返回 failed 或 reconciling 时不能显示交接成功 (1.19925ms)
+✔ 全部远端诊断不可读时仍附链接与缺失证据交给 Agent (0.389625ms)
+✔ 缺任务能力、非法 PR 参数和 KV 读取失败不创建任务 (0.662208ms)
+✔ GitHub 请求最多三个并发；搜索部分失败明确提示不完整 (0.686667ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55.698875
+
+exit code: 0
+
+$ node --check plugin/pr-board/main.js
+
+
+exit code: 0
+
+$ node --check plugin/pr-board/panel.js
+
+
+exit code: 0
+
+$ node --check plugin/pr-board/settings.js
+
+
+exit code: 0

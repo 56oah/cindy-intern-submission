@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><link rel="stylesheet" href="/style.css"></head><body class="settings"><main>
+<p>fine-grained PAT 可按仓库授予 Pull requests、Commit statuses、Actions 读取权限，但没有 Checks 权限选项；私有 Checks 读取失败会显示未知。组织可能要求管理员批准。</p>
+<p>完整读取私有 Checks 可使用支持该接口的已有 OAuth token，或由你自行选择带 repo scope 的 classic PAT。repo scope 权限较广，包含写权限，并非只读令牌；本插件只调用读取接口。</p>
+<p><a href="https://github.com/settings/tokens">前往 GitHub 管理 Token</a></p>
+<label>GitHub Token<input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="仅用于这次保存，不会读回"></label>
+<div class="toolbar"><button id="save">保存</button><button id="remove">清除</button></div><p id="status" role="status"></p>
+</main><script src="/settings.js"></script></body></html>
